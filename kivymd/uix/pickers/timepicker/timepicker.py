@@ -120,6 +120,7 @@ from kivymd.uix.label import MDLabel
 from kivymd.uix.pickers.datepicker import BaseDialogPicker
 from kivymd.uix.relativelayout import MDRelativeLayout
 from kivymd.uix.textfield import MDTextField
+from kivymd import uix_path
 
 with open(
     os.path.join(uix_path, "pickers", "timepicker", "timepicker.kv"),
