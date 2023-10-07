@@ -234,6 +234,7 @@ from kivymd.uix.dialog import BaseDialog
 from kivymd.uix.label import MDLabel
 from kivymd.uix.textfield import MDTextField
 from kivymd.uix.tooltip import MDTooltip
+from kivymd import uix_path
 
 with open(
     os.path.join(uix_path, "pickers", "datepicker", "datepicker.kv"),
