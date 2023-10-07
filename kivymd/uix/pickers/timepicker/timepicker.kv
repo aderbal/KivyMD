@@ -23,7 +23,7 @@
             size: self.size
             radius: [root.border_radius, ]
 
-        #AM
+        #AM/PM
         Color:
             rgba: root._am_bg_color
         RoundedRectangle:
@@ -49,44 +49,6 @@
                 [root.border_radius, root.border_radius, 0, 0] \
                 if self.orientation == "vertical" else \
                 [root.border_radius, 0, 0, root.border_radius]
-
-        #PM
-        Color:
-            rgba: root._pm_bg_color
-        RoundedRectangle:
-            pos:
-                [ \
-                self.pos[0] + root.border_width, \
-                self.pos[1] + self.border_width \
-                ] if self.orientation == "vertical" else \
-                [ \
-                self.pos[0] + root.size[0] / 2 + root.border_width / 2, \
-                self.pos[1] + root.border_width \
-                ]
-            size:
-                [ \
-                self.size[0] - root.border_width * 2, \
-                self.size[1] / 2 - self.border_width * 1.5 \
-                ] if self.orientation == "vertical" else \
-                [ \
-                self.size[0] / 2 - root.border_width * 1.5, \
-                self.size[1] - root.border_width * 2 \
-                ]
-            radius:
-                [0, 0, root.border_radius, root.border_radius] \
-                if self.orientation == "vertical" else \
-                [0 ,root.border_radius, root.border_radius, 0]
-
-    # AM
-    AmPmSelectorLabel:
-        text: "AM"
-        on_release: root.selected = "am"
-        text_color: root.text_color
-
-    AmPmSelectorLabel:
-        text: "PM"
-        on_release: root.selected = "pm"
-        text_color: root.text_color
 
 
 <TimeInputTextField>
@@ -258,7 +220,7 @@
 
         TimeInputLabel:
             id: _hour_label
-            text: "Hour"
+            text: "Hora"
             opacity: 0
             text_color:
                 root.text_toolbar_color if root.text_toolbar_color else \
@@ -266,7 +228,7 @@
 
         TimeInputLabel:
             id: _minute_label
-            text: "Minute"
+            text: "Minuto"
             opacity: 0
             text_color:
                 root.text_toolbar_color if root.text_toolbar_color else \
@@ -305,20 +267,10 @@
             font_name: root.font_name
             on_selector_change: root._get_dial_time(_selector)
 
-        MDIconButton:
-            id: input_clock_switch
-            icon: "keyboard"
-            pos: dp(12), dp(8)
-            theme_icon_color: "Custom"
-            icon_size: "24dp"
-            on_release: root._switch_input()
-            icon_color:
-                root.text_toolbar_color if root.text_toolbar_color else \
-                root.theme_cls.secondary_text_color
 
         MDFlatButton:
             id: cancel_button
-            text: "CANCEL"
+            text: "CANCELA"
             on_release: root.dispatch("on_cancel", None)
             theme_text_color: "Custom"
             pos: root.width - self.width - ok_button.width - dp(10), dp(10)
